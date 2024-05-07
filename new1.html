@@ -51,34 +51,65 @@
         .calculator button:hover {
             background-color: #45a049;
         }
+
+        .operators {
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Distribute items evenly */
+        }
+
+        .operators button {
+            background-color: #282f28;
+            width: 90px; /* Adjust button width */
+        }
+
+        .operators button:hover{
+            background-color: #606760;
+        }
     </style>
 </head>
 <body>
     <div class="calculator">
         <h1>Calculator</h1>
         <input type="text" id="first" placeholder="Enter a first number">
-        <input type="text" id="op" placeholder="Enter an operator (+, -, *, /)">
+        <div class="operators">
+        <button id="add" value="+" onclick="setOperator('+');  document.getElementById('add').style.backgroundColor = '#ccc'">+</button>
+        <button id="subtract" value="-" onclick="setOperator('-');  document.getElementById('subtract').style.backgroundColor = '#ccc'">-</button>
+        <button id="multiply" value="*" onclick="setOperator('*');  document.getElementById('multiply').style.backgroundColor = '#ccc'">*</button>
+        <button id="divide" value="/" onclick="setOperator('/');  document.getElementById('divide').style.backgroundColor = '#ccc'">/</button>
+        </div>
+
         <input type="text" id="sec" placeholder="Enter a second number">
         <button onclick="cal();">Calculate</button>
         <h2 id="display"></h2>
     </div>
 
     <script>
+        let operator = '';
+
+        function setOperator(op) {
+            operator = op;
+            
+        }
+
         function cal() {
             let first = parseFloat(document.getElementById('first').value);
-            let op = document.getElementById('op').value;
             let sec = parseFloat(document.getElementById('sec').value);
 
-            if (op === '+') {
-                document.getElementById('display').innerHTML = first + sec;
-            } else if (op === '-') {
-                document.getElementById('display').innerHTML = first - sec;
-            } else if (op === '*') {
-                document.getElementById('display').innerHTML = first * sec;
-            } else if (op === '/') {
-                document.getElementById('display').innerHTML = first / sec;
-            } else {
-                document.getElementById('display').innerHTML = "Invalid operator";
+            switch (operator) {
+                case '+':
+                    document.getElementById('display').innerHTML = first + sec;
+                    break;
+                case '-':
+                    document.getElementById('display').innerHTML = first - sec;
+                    break;
+                case '*':
+                    document.getElementById('display').innerHTML = first * sec;
+                    break;
+                case '/':
+                    document.getElementById('display').innerHTML = first / sec;
+                    break;
+                default:
+                    document.getElementById('display').innerHTML = "Invalid operator";
             }
         }
     </script>
