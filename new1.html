@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .calculator h1 {
+            text-align: center;
+        }
+        
+        .calculator input[type="text"],
+        .calculator button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .calculator button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .calculator button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="first" placeholder="Enter a first number">
+        <input type="text" id="op" placeholder="Enter an operator (+, -, *, /)">
+        <input type="text" id="sec" placeholder="Enter a second number">
+        <button onclick="cal();">Calculate</button>
+        <h2 id="display"></h2>
+    </div>
+
+    <script>
+        function cal() {
+            let first = parseFloat(document.getElementById('first').value);
+            let op = document.getElementById('op').value;
+            let sec = parseFloat(document.getElementById('sec').value);
+
+            if (op === '+') {
+                document.getElementById('display').innerHTML = first + sec;
+            } else if (op === '-') {
+                document.getElementById('display').innerHTML = first - sec;
+            } else if (op === '*') {
+                document.getElementById('display').innerHTML = first * sec;
+            } else if (op === '/') {
+                document.getElementById('display').innerHTML = first / sec;
+            } else {
+                document.getElementById('display').innerHTML = "Invalid operator";
+            }
+        }
+    </script>
+</body>
+</html>
