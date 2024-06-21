@@ -5,113 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-        }
-        
-        .calculator {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
-        }
-        
-        .calculator h1 {
-            text-align: center;
-        }
-        
-        .calculator input[type="text"],
-        .calculator button {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        
-        .calculator button {
-            background-color: #4caf50;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .calculator button:hover {
-            background-color: #45a049;
-        }
-
-        .operators {
-            display: flex; /* Use flexbox */
-            justify-content: space-between; /* Distribute items evenly */
-        }
-
-        .operators button {
-            background-color: #282f28;
-            width: 90px; /* Adjust button width */
-        }
-
-        .operators button:hover{
-            background-color: #606760;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
         <h1>Calculator</h1>
-        <input type="text" id="first" placeholder="Enter a first number">
-        <div class="operators">
-        <button id="add" value="+" onclick="setOperator('+');  document.getElementById('add').style.backgroundColor = '#ccc'">+</button>
-        <button id="subtract" value="-" onclick="setOperator('-');  document.getElementById('subtract').style.backgroundColor = '#ccc'">-</button>
-        <button id="multiply" value="*" onclick="setOperator('*');  document.getElementById('multiply').style.backgroundColor = '#ccc'">*</button>
-        <button id="divide" value="/" onclick="setOperator('/');  document.getElementById('divide').style.backgroundColor = '#ccc'">/</button>
+        <h3 id="display1">0</h3>
+        <h2 id="display3"> </h2>
+        <div class="buttons">
+            <button id="clear" class="btn-operator"onclick="remove()">C</button>
+            <button class="btn-operator" id="/" onclick="setNumber(null , '/')">/</button>
+            <button class="btn-operator" id="*" onclick="setNumber(null , '*')">*</button>
+            <button class="btn-operator"  onclick="setNumber(null , 'no')"><</button>
+            <button class="btn-number" id="7" onclick="setNumber('7' , null)">7</button>
+            <button class="btn-number" id="8" onclick="setNumber('8' , null)">8</button>
+            <button class="btn-number" id="9" onclick="setNumber('9', null)">9</button>
+            <button class="btn-operator" id="-" value="-" onclick="setNumber(null , '-')">-</button>
+            <button class="btn-number" id="4" onclick="setNumber('4' , null)">4</button>
+            <button class="btn-number" id="5" onclick="setNumber('5' , null)">5</button>
+            <button class="btn-number" id="6" onclick="setNumber('6' , null)">6</button>
+            <button class="btn-operator" id="+" onclick="setNumber(null , '+')">+</button>
+            <button class="btn-number" id="1" onclick="setNumber('1' , null)">1</button>
+            <button class="btn-number" id="2" onclick="setNumber('2' , null)">2</button>
+            <button class="btn-number" id="3" onclick="setNumber('3' , null)">3</button>
+            <button class="btn-operator" id="%" onclick="setNumber(null , '%')">%</button>
+            <button class="btn-number" id="0" onclick="setNumber('0' , null)">0</button>
+            <td colspan="4"><button class="btn-equal" id="equal" onclick="equal()">=</button></td>
         </div>
-
-        <input type="text" id="sec" placeholder="Enter a second number">
-        <button onclick="cal();">Calculate</button>
-        <h2 id="display"></h2>
+        
     </div>
-
-    <script>
-        let operator = '';
-
-        function setOperator(op) {
-            operator = op;
-            
-        }
-
-        function cal() {
-            let first = parseFloat(document.getElementById('first').value);
-            let sec = parseFloat(document.getElementById('sec').value);
-
-            switch (operator) {
-                case '+':
-                    document.getElementById('display').innerHTML = first + sec;
-                    break;
-                case '-':
-                    document.getElementById('display').innerHTML = first - sec;
-                    break;
-                case '*':
-                    document.getElementById('display').innerHTML = first * sec;
-                    break;
-                case '/':
-                    document.getElementById('display').innerHTML = first / sec;
-                    break;
-                default:
-                    document.getElementById('display').innerHTML = "Invalid operator";
-            }
-        }
-    </script>
+ <script src="script.js"></script>
 </body>
 </html>
